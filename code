@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <string.h>
+
+char* readLine()
+{
+    char userInput;
+    static char str[100];
+    int i = 0;
+    while ((userInput = getchar()) != '\n' && userInput != EOF)
+    {
+        str[i] = userInput;
+        i++;
+    }
+
+    return str;
+}
+
+int main(int argc, char const *argv[])
+{  
+    char* opc = readLine();
+    print("O que foi digitado: %s", opc);
+    return 0;
+}
