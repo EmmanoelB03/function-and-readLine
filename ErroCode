@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char* readLine()
+{
+    char input;
+    char *p = (char*)malloc(3*sizeof(char));
+    int length = strlen(p);
+    int i = 0;
+    while ((input = getchar()) != '\n' && input != EOF)
+    {
+        
+        if(i >= length)
+        {
+            printf("Limite da string estourou");
+            p = realloc(p, length+1 * sizeof(char));
+        }
+
+        *(p+i) = input;
+        
+
+        i++;
+    }
+
+    if(p == NULL){
+        printf("Erro ao alocar");
+        free(p);
+    }
+
+    length = strlen(p);
+    p = realloc(p, length+1 * sizeof(char));
+    p[length+1] = '\0';
+
+    return p;
+
+}
+
+int main(int argc, char const *argv[])
+{
+    //escreva seu texto
+    printf("write your text: ");
+    
+    char* string = readLine();
+
+    printf("you write this: %s", string);
+
+    free(string);
+
+
+
+    return 0;
+}
